@@ -1,0 +1,22 @@
+/*
+Theme Name: cartsaver-theme
+Theme URI: https://example.com/
+Author: Cartsaver
+Description: A Tailwind CSS-powered WordPress theme for Cartsaver.
+Version: 1.0.0
+Text Domain: cartsaver-theme
+*/
+@import "tailwindcss";
+
+@layer base {
+  body {
+    @apply bg-slate-50 text-slate-900 antialiased;
+  }
+}
+
+@layer components {
+  .cs-container {
+    @apply mx-auto max-w-5xl px-4;
+  }
+}
+
