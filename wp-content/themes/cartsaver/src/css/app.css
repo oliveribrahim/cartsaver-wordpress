@@ -1,0 +1,594 @@
+/*
+Theme Name: cartsaver
+Theme URI: https://example.com/
+Author: Cartsaver
+Description: A Tailwind CSS-powered WordPress theme for Cartsaver.
+Version: 1.0.0
+Text Domain: cartsaver-theme
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import "tailwindcss";
+
+/* ============================================================
+   DESIGN TOKENS — CSS Custom Properties
+   ============================================================
+
+   HOW TO USE:
+   - In CSS:        color: hsl(var(--primary));
+   - In Tailwind:   class="text-primary bg-primary/10 border-primary"
+   ============================================================ */
+
+:root {
+
+  /* ----------------------------------------------------------
+     BRAND COLORS
+  ---------------------------------------------------------- */
+
+  /* Primary — Orange */
+  --primary:            38 93% 48%;       /* #F59E0B */
+  --primary-light:      43 96% 56%;       /* #FBBF24 — lighter tint */
+  --primary-dark:       32 95% 44%;       /* #D97706 — darker shade */
+  --primary-foreground: 0 0% 100%;        /* White text on primary bg */
+
+  /* Secondary — Dark Navy */
+  --secondary:          222 47% 15%;      /* #111827 */
+  --secondary-light:    220 26% 26%;      /* #2D3748 */
+  --secondary-foreground: 0 0% 100%;      /* White text on secondary bg */
+
+  /* Accent — Shopify Green */
+  --accent:             142 72% 29%;      /* #1A7340 */
+  --accent-light:       141 69% 38%;      /* #22963F */
+  --accent-foreground:  0 0% 100%;        /* White text on accent bg */
+
+  /* --shopify-green kept as alias for legacy code */
+  --shopify-green:      142 72% 29%;
+
+
+  /* ----------------------------------------------------------
+     NEUTRAL / SURFACE COLORS
+  ---------------------------------------------------------- */
+
+  --background:         40 33% 97%;       /* #FAF9F6 — warm cream (matches hero) */
+  --foreground:         222 47% 11%;      /* #0F172A — near-black for body text */
+
+  --card:               0 0% 100%;        /* #FFFFFF */
+  --card-foreground:    222 47% 11%;
+
+  --muted:              40 20% 93%;       /* #EDE9E1 — soft warm grey */
+  --muted-foreground:   220 9% 46%;       /* #6B7280 — subdued text */
+
+  --border:             40 16% 88%;       /* #E5E0D8 — warm border */
+  --input:              40 16% 88%;       /* Same as border for form inputs */
+
+  --ring:               38 93% 48%;       /* Focus ring = primary */
+
+  /* ----------------------------------------------------------
+     FEEDBACK COLORS
+  ---------------------------------------------------------- */
+
+  --success:            142 72% 29%;      /* #1A7340 */
+  --success-foreground: 0 0% 100%;
+
+  --warning:            38 93% 48%;       /* #F59E0B — same as primary */
+  --warning-foreground: 0 0% 100%;
+
+  --error:              0 84% 60%;        /* #EF4444 */
+  --error-foreground:   0 0% 100%;
+
+  --info:               217 91% 60%;      /* #3B82F6 */
+  --info-foreground:    0 0% 100%;
+
+
+  /* ----------------------------------------------------------
+     TYPOGRAPHY
+  ---------------------------------------------------------- */
+
+  --font-sans:          'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-mono:          ui-monospace, 'Cascadia Code', monospace;
+
+  /* Font sizes (rem) */
+  --text-xs:    0.75rem;    /* 12px */
+  --text-sm:    0.875rem;   /* 14px */
+  --text-base:  1rem;       /* 16px */
+  --text-lg:    1.125rem;   /* 18px */
+  --text-xl:    1.25rem;    /* 20px */
+  --text-2xl:   1.5rem;     /* 24px */
+  --text-3xl:   1.875rem;   /* 30px */
+  --text-4xl:   2.25rem;    /* 36px */
+  --text-5xl:   3rem;       /* 48px */
+  --text-6xl:   3.75rem;    /* 60px */
+  --text-7xl:   4.5rem;     /* 72px */
+
+  /* Font weights */
+  --font-light:      300;
+  --font-normal:     400;
+  --font-medium:     500;
+  --font-semibold:   600;
+  --font-bold:       700;
+  --font-extrabold:  800;
+  --font-black:      900;
+
+  /* Line heights */
+  --leading-tight:   1.1;
+  --leading-snug:    1.3;
+  --leading-normal:  1.5;
+  --leading-relaxed: 1.625;
+  --leading-loose:   2;
+
+  /* Letter spacing */
+  --tracking-tight:  -0.02em;
+  --tracking-normal:  0em;
+  --tracking-wide:    0.025em;
+
+
+  /* ----------------------------------------------------------
+     SPACING & SIZING
+  ---------------------------------------------------------- */
+
+  --radius-sm:   0.375rem;   /* 6px  — small elements */
+  --radius:      0.5rem;     /* 8px  — buttons, inputs */
+  --radius-md:   0.75rem;    /* 12px — cards */
+  --radius-lg:   1rem;       /* 16px — large cards */
+  --radius-xl:   1.5rem;     /* 24px — hero cards */
+  --radius-full: 9999px;     /* pills / badges */
+
+  --container-max: 80rem;    /* 1280px */
+  --container-md:  64rem;    /* 1024px */
+  --container-sm:  48rem;    /* 768px  */
+
+
+  /* ----------------------------------------------------------
+     SHADOWS & EFFECTS
+  ---------------------------------------------------------- */
+
+  --shadow-sm:   0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow:      0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --shadow-md:   0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg:   0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-xl:   0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+
+  /* Glow — used on hero card */
+  --shadow-glow: 0 0 40px -8px hsl(38 93% 48% / 0.25),
+  0 20px 25px -5px rgb(0 0 0 / 0.08);
+
+  /* ----------------------------------------------------------
+     Z-INDEX SCALE
+  ---------------------------------------------------------- */
+
+  --z-below:    -1;
+  --z-base:      0;
+  --z-raised:   10;
+  --z-dropdown: 100;
+  --z-sticky:   200;
+  --z-overlay:  300;
+  --z-modal:    400;
+  --z-toast:    500;
+  --z-tooltip:  600;
+}
+
+
+/* ============================================================
+   TAILWIND THEME EXTENSION
+   Maps CSS variables → Tailwind utility classes
+   e.g. bg-primary, text-muted-foreground, border-border
+   ============================================================ */
+
+@theme {
+  --color-primary:            hsl(var(--primary));
+  --color-primary-light:      hsl(var(--primary-light));
+  --color-primary-dark:       hsl(var(--primary-dark));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+
+  --color-secondary:            hsl(var(--secondary));
+  --color-secondary-light:      hsl(var(--secondary-light));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+
+  --color-accent:             hsl(var(--accent));
+  --color-accent-light:       hsl(var(--accent-light));
+  --color-accent-foreground:  hsl(var(--accent-foreground));
+
+  --color-background:         hsl(var(--background));
+  --color-foreground:         hsl(var(--foreground));
+
+  --color-card:               hsl(var(--card));
+  --color-card-foreground:    hsl(var(--card-foreground));
+
+  --color-muted:              hsl(var(--muted));
+  --color-muted-foreground:   hsl(var(--muted-foreground));
+
+  --color-border:             hsl(var(--border));
+  --color-input:              hsl(var(--input));
+  --color-ring:               hsl(var(--ring));
+
+  --color-success:            hsl(var(--success));
+  --color-warning:            hsl(var(--warning));
+  --color-error:              hsl(var(--error));
+  --color-info:               hsl(var(--info));
+
+  --font-family-sans: var(--font-sans);
+  --font-family-mono: var(--font-mono);
+
+  --border-radius-sm:   var(--radius-sm);
+  --border-radius:      var(--radius);
+  --border-radius-md:   var(--radius-md);
+  --border-radius-lg:   var(--radius-lg);
+  --border-radius-xl:   var(--radius-xl);
+  --border-radius-full: var(--radius-full);
+}
+
+
+/* ============================================================
+   BASE STYLES
+   ============================================================ */
+
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    font-family: var(--font-sans);
+    font-size: 16px;
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased pt-16;
+    font-family: var(--font-sans);
+    line-height: var(--leading-normal);
+  }
+
+  /* Headings */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-sans);
+    font-weight: var(--font-bold);
+    line-height: var(--leading-tight);
+    letter-spacing: var(--tracking-tight);
+    color: hsl(var(--foreground));
+  }
+
+  h1 { font-size: var(--text-5xl); }
+  h2 { font-size: var(--text-4xl); }
+  h3 { font-size: var(--text-3xl); }
+  h4 { font-size: var(--text-2xl); }
+  h5 { font-size: var(--text-xl); }
+  h6 { font-size: var(--text-lg); }
+
+  p {
+    line-height: var(--leading-relaxed);
+    color: hsl(var(--muted-foreground));
+  }
+
+  a {
+    color: hsl(var(--primary));
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  a:hover {
+    color: hsl(var(--primary-dark));
+  }
+
+  /* Focus ring */
+  :focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
+  }
+
+  /* Horizontal rule */
+  hr {
+    border-color: hsl(var(--border));
+    border-top-width: 1px;
+    margin: 2rem 0;
+  }
+}
+
+
+/* ============================================================
+   COMPONENT UTILITIES
+   ============================================================ */
+
+@layer components {
+  /* ============================================================
+   HERO SECTION
+   Add this inside @layer components {} in style.css
+   ============================================================ */
+
+  /* ── Section wrapper ──────────────────────────────────────── */
+
+  .hero-section {
+    @apply relative overflow-hidden pt-24 pb-24;
+  }
+
+  /* ── Background decorations ───────────────────────────────── */
+
+  .hero-section__bg-gradient {
+    @apply absolute inset-0;
+    background: linear-gradient(
+            135deg,
+            hsl(var(--primary) / 0.05) 0%,
+            hsl(var(--background)) 50%,
+            hsl(var(--primary) / 0.10) 100%
+    );
+  }
+
+  .hero-section__bg-blob {
+    @apply absolute w-96 h-96 rounded-full blur-3xl opacity-20 animate-pulse;
+  }
+
+  .hero-section__bg-blob--top {
+    @apply top-0 right-0;
+    background-color: hsl(var(--primary) / 0.2);
+  }
+
+  .hero-section__bg-blob--bottom {
+    @apply bottom-0 left-0;
+    background-color: hsl(var(--accent) / 0.2);
+    animation-delay: 1s;
+  }
+
+  /* ── Two-column grid ──────────────────────────────────────── */
+
+  .hero-section__grid {
+    @apply grid gap-12 items-center max-w-7xl mx-auto;
+    grid-template-columns: 1fr;
+  }
+
+  @media (min-width: 1024px) {
+    .hero-section__grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  /* ── Left column ──────────────────────────────────────────── */
+
+  .hero-section__content {
+    @apply text-left;
+  }
+
+  /* Badge */
+  .hero-section__badge {
+    @apply mb-8;
+  }
+
+  /* Heading */
+  .hero-section__title {
+    font-size: var(--text-4xl);
+    font-weight: var(--font-bold);
+    line-height: var(--leading-tight);
+    letter-spacing: var(--tracking-tight);
+    color: hsl(var(--foreground));
+    @apply mb-6;
+  }
+
+  @media (min-width: 640px) {
+    .hero-section__title { font-size: var(--text-5xl); }
+  }
+
+  @media (min-width: 1024px) {
+    .hero-section__title { font-size: var(--text-6xl); }
+  }
+
+  .hero-section__title span {
+    color: hsl(var(--primary));
+  }
+
+  /* Description */
+  .hero-section__description {
+    font-size: var(--text-base);
+    line-height: var(--leading-relaxed);
+    color: hsl(var(--muted-foreground));
+    max-width: 32rem;
+    @apply mb-8;
+  }
+
+  @media (min-width: 640px) {
+    .hero-section__description { font-size: var(--text-lg); }
+  }
+
+  /* Quick stats row */
+  .hero-section__stats {
+    @apply flex flex-wrap gap-6 mb-10;
+  }
+
+  .hero-section__stat {
+    @apply flex items-center gap-2;
+    font-size: var(--text-sm);
+    font-weight: var(--font-medium);
+    color: hsl(var(--foreground));
+  }
+
+  .hero-section__stat-icon {
+    @apply w-5 h-5 shrink-0;
+    color: hsl(var(--primary));
+  }
+
+  .hero-section__stat-icon--filled {
+    fill: hsl(var(--primary));
+    color: hsl(var(--primary));
+  }
+
+  /* CTA buttons */
+  .hero-section__actions {
+    @apply flex flex-col sm:flex-row items-center justify-start gap-4 mb-8;
+  }
+
+  .hero-section__btn {
+    min-width: 180px;
+    @apply text-card-foreground;
+  }
+
+  /* Rating row */
+  .hero-section__rating {
+    @apply flex flex-col lg:flex-row items-start lg:items-center gap-3;
+  }
+
+  .hero-section__stars {
+    @apply flex items-center gap-1;
+  }
+
+  .hero-section__star {
+    @apply w-5 h-5;
+    fill: hsl(var(--primary));
+    color: hsl(var(--primary));
+    stroke: hsl(var(--primary));
+    stroke-width: 1;
+  }
+
+  .hero-section__rating-value {
+    font-size: var(--text-base);
+    font-weight: var(--font-bold);
+    color: hsl(var(--foreground));
+    @apply ml-1;
+  }
+
+  .hero-section__rating-dot {
+    color: hsl(var(--muted-foreground));
+    @apply hidden lg:inline;
+  }
+
+  .hero-section__trusted {
+    font-size: var(--text-sm);
+    color: hsl(var(--muted-foreground));
+    @apply m-0;
+  }
+
+  /* ── Right column — visual ────────────────────────────────── */
+
+  .hero-section__visual {
+    @apply hidden lg:flex items-center justify-center relative;
+  }
+
+  /* Outer card */
+  .hero-section__card {
+    /* card-glow handles bg, border, radius, shadow */
+    @apply bg-white rounded-lg shadow-md p-8;
+  }
+
+  .hero-section__card-inner {
+    @apply space-y-6;
+  }
+
+  /* Card header row */
+  .hero-section__card-header {
+    @apply flex items-center gap-3;
+  }
+
+  .hero-section__card-icon {
+    @apply w-12 h-12 rounded-full flex items-center justify-center;
+    background-color: hsl(var(--primary) / 0.1);
+    color: hsl(var(--primary));
+  }
+
+  /* Order status block */
+  .hero-section__card-order {
+    @apply rounded-lg p-4 space-y-3;
+    background-color: hsl(var(--muted) / 0.5);
+  }
+
+  .hero-section__card-order-header {
+    @apply flex items-center justify-between;
+  }
+
+  .hero-section__card-steps {
+    @apply space-y-2;
+  }
+
+  .hero-section__card-step {
+    @apply flex items-center gap-2;
+  }
+
+  .hero-section__step-dot {
+    @apply w-2 h-2 rounded-full flex-shrink-0;
+    background-color: hsl(var(--muted));
+  }
+
+  .hero-section__step-dot--active {
+    @apply animate-pulse;
+    background-color: hsl(var(--primary));
+  }
+
+  /* Card stats grid */
+  .hero-section__card-stats {
+    @apply grid grid-cols-3 gap-4 pt-4;
+    border-top: 1px solid hsl(var(--border));
+  }
+
+  .hero-section__card-stat {
+    @apply text-center;
+  }
+
+  .hero-section__card-stat-value {
+    font-size: var(--text-2xl);
+    font-weight: var(--font-bold);
+    color: hsl(var(--primary));
+  }
+
+  .hero-section__card-stat-label {
+    font-size: var(--text-xs);
+    color: hsl(var(--muted-foreground));
+  }
+
+  /* Live badge */
+  .hero-section__live-badge {
+    @apply absolute -top-4 -right-4 rounded-full px-4 py-2 shadow-lg animate-bounce;
+    background-color: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    font-size: var(--text-sm);
+    font-weight: var(--font-bold);
+  }
+
+  /* Shopify partner badge */
+  .hero-section__shopify-badge {
+    @apply absolute -bottom-6 -right-6 rounded-xl px-5 py-3 flex flex-col items-center gap-2;
+    background-color: hsl(var(--card));
+    border: 2px solid hsl(var(--accent));
+    box-shadow: var(--shadow-lg);
+  }
+
+  .hero-section__shopify-label {
+    font-size: var(--text-xs);
+    font-weight: var(--font-semibold);
+    color: hsl(var(--accent));
+  }
+
+  /* ── Video Modal ──────────────────────────────────────────── */
+
+  .hero-modal-overlay {
+    @apply fixed inset-0 transition-opacity duration-200 opacity-0;
+    z-index: var(--z-overlay);
+    background-color: rgb(0 0 0 / 0.8);
+  }
+
+  .hero-modal-content {
+    @apply fixed left-1/2 top-1/2 w-full max-w-4xl -translate-x-1/2 -translate-y-1/2
+    transition-all duration-200 opacity-0 scale-95 rounded-lg;
+    z-index: var(--z-modal);
+    border: 1px solid hsl(var(--border));
+  }
+
+  .hero-modal-inner {
+    @apply relative w-full;
+    padding-top: 56.25%; /* 16:9 */
+  }
+
+  .hero-modal-iframe {
+    @apply absolute top-0 left-0 w-full h-full rounded-lg;
+  }
+}
+
+
+/**********************/
+/**********************/
+/**********************/
+
+.wp-block-navigation .wp-block-navigation__container{
+  @apply flex items-center justify-center w-full gap-8;
+}
+
+.wp-block-navigation__container .wp-block-navigation-item .wp-block-navigation-item__content .wp-block-navigation-item__label{
+  @apply text-sm font-normal leading-tight text-gray-500;
+}

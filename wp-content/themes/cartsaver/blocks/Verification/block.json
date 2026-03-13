@@ -1,0 +1,18 @@
+{
+    "name": "acf/cartsaver-verification-comparison",
+    "title": "Cartsaver vs Manual Verification",
+    "description": "Comparison table: Cartsaver vs manual verification.",
+    "category": "cartsaver",
+    "icon": "table-row-after",
+    "keywords": ["cartsaver", "verification", "comparison", "table"],
+    "style": ["cartsaver-block-style"],
+    "acf": {
+      "mode": "preview",
+      "renderTemplate": "blocks/Verification/render.php"
+    },
+    "supports": {
+      "align": ["wide", "full"],
+      "anchor": true,
+      "jsx": false
+    }
+  }

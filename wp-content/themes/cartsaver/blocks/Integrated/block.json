@@ -1,0 +1,17 @@
+{
+    "name": "cartsaver/integrated",
+    "title": "Integrated Providers",
+    "description": "Logos of integrated SMS network providers.",
+    "category": "design",
+    "icon": "networking",
+    "keywords": ["integrated", "logos", "providers", "sms"],
+    "acf": {
+      "mode": "preview",
+      "renderTemplate": "render.php"
+    },
+    "supports": {
+      "align": ["full", "wide"],
+      "anchor": true,
+      "jsx": false
+    }
+  }

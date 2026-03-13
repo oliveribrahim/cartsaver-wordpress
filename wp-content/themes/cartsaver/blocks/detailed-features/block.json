@@ -1,0 +1,18 @@
+{
+    "name": "acf/cartsaver-detailed-features",
+    "title": "Detailed Features",
+    "description": "Accordion section for a complete feature breakdown.",
+    "category": "cartsaver",
+    "icon": "list-view",
+    "keywords": ["features", "accordion", "details", "cartsaver"],
+    "style": ["cartsaver-block-style"],
+    "acf": {
+      "mode": "preview",
+      "renderTemplate": "blocks/detailed-features/render.php"
+    },
+    "supports": {
+      "align": ["wide", "full"],
+      "anchor": true,
+      "jsx": false
+    }
+  }

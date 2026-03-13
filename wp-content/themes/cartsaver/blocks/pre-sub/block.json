@@ -1,0 +1,18 @@
+{
+    "name": "acf/cartsaver-pre-sub",
+    "title": "Pre Submit CTA",
+    "description": "Final CTA section with gradient background, input form and trust bullets.",
+    "category": "cartsaver",
+    "icon": "shield",
+    "keywords": ["cta", "hero", "install", "pre submit", "cartsaver"],
+    "style": ["cartsaver-block-style"],
+    "acf": {
+      "mode": "preview",
+      "renderTemplate": "blocks/pre-sub/render.php"
+    },
+    "supports": {
+      "align": ["wide", "full"],
+      "anchor": true,
+      "jsx": false
+    }
+  }

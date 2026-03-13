@@ -1,0 +1,18 @@
+{
+    "name": "acf/cartsaver-why-cartsaver",
+    "title": "Why Cartsaver",
+    "description": "Features section with heading, description, and feature cards.",
+    "category": "cartsaver",
+    "icon": "star-filled",
+    "keywords": ["why", "cartsaver", "features", "benefits"],
+    "style": ["cartsaver-block-style"],
+    "acf": {
+      "mode": "preview",
+      "renderTemplate": "blocks/why-cartsaver/render.php"
+    },
+    "supports": {
+      "align": ["wide", "full"],
+      "anchor": true,
+      "jsx": false
+    }
+  }

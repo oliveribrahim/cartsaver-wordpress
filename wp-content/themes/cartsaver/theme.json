@@ -1,0 +1,41 @@
+{
+  "version": 2,
+  "settings": {
+    "color": {
+      "palette": [
+        {
+          "name": "Primary",
+          "slug": "primary",
+          "color": "#F59E0B"
+        },
+        {
+          "slug": "shopify-green-light",
+          "color": "hsl(var(--shopify-green) / 0.1)",
+          "name": "Shopify Green Light"
+        }
+      ]
+    }
+  },
+  "templateParts": [
+    {
+      "name": "header",
+      "title": "Header",
+      "area": "header"
+    },
+    {
+      "name": "footer",
+      "title": "Footer",
+      "area": "footer"
+    },
+    {
+      "name": "header",
+      "title": "Header",
+      "area": "header"
+    },
+    {
+      "name": "footer",
+      "title": "Footer",
+      "area": "footer"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+    "name": "acf/cartsaver-pricing",
+    "title": "Pricing",
+    "description": "Pricing section with multiple plans.",
+    "category": "cartsaver",
+    "icon": "money",
+    "keywords": ["pricing", "plans", "subscriptions", "cartsaver"],
+    "style": ["cartsaver-block-style"],
+    "acf": {
+      "mode": "preview",
+      "renderTemplate": "blocks/pricing/render.php"
+    },
+    "supports": {
+      "align": ["wide", "full"],
+      "anchor": true,
+      "jsx": false
+    }
+  }

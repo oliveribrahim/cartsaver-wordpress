@@ -1,0 +1,18 @@
+{
+    "name": "acf/cartsaver-trusted",
+    "title": "Trusted Brands Carousel",
+    "description": "Trusted-by section with     logos carousel and brand details.",
+    "category": "layout",
+    "icon": "groups",
+    "keywords": ["trusted", "logos", "brands", "carousel"],
+    "style": ["cartsaver-block-style"],
+    "acf": {
+      "mode": "preview",
+      "renderTemplate": "blocks/trusted/render.php"
+    },
+    "supports": {
+      "align": false,
+      "anchor": true,
+      "jsx": false
+    }
+  }
